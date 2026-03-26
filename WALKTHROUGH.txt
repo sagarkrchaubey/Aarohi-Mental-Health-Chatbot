@@ -1,0 +1,257 @@
+AAROHI - STEP-BY-STEP RUN WALKTHROUGH
+====================================
+
+This guide explains exactly how to run the Aarohi Mental Health Support System on your machine.
+
+
+1. What You Need
+----------------
+
+Before starting, make sure you have:
+
+- Python 3.11 or newer installed
+- Internet connection
+- A Google Gemini API key
+
+
+2. Open The Project
+-------------------
+
+Open a terminal in the project folder.
+
+If you downloaded the project from GitHub, first go into the repo folder:
+
+    cd Aarohi-Mental-Health-Chatbot
+
+
+3. Create A Virtual Environment
+-------------------------------
+
+Windows PowerShell:
+
+    py -m venv .venv
+    .\.venv\Scripts\Activate.ps1
+
+Mac/Linux:
+
+    python3 -m venv .venv
+    source .venv/bin/activate
+
+
+4. Install Dependencies
+-----------------------
+
+Windows:
+
+    py -m pip install -r requirements.txt
+
+Mac/Linux:
+
+    python -m pip install -r requirements.txt
+
+
+5. Create The Environment File
+------------------------------
+
+Copy the example file and create a real .env file.
+
+Windows PowerShell:
+
+    Copy-Item .env.example .env
+
+Mac/Linux:
+
+    cp .env.example .env
+
+Open the .env file and set your Gemini API key:
+
+    GEMINI_API_KEY=your_real_gemini_api_key_here
+
+You can keep the rest of the default values unless you want to tune them.
+
+
+6. Start The Backend
+--------------------
+
+Open the first terminal in the project folder and run:
+
+Windows:
+
+    py -m uvicorn backend.main:app --reload
+
+Mac/Linux:
+
+    python -m uvicorn backend.main:app --reload
+
+If the backend starts correctly, it will run at:
+
+    http://localhost:8000
+
+
+7. Start The Frontend
+---------------------
+
+Open a second terminal in the same project folder.
+
+Activate the virtual environment again if needed.
+
+Windows PowerShell:
+
+    .\.venv\Scripts\Activate.ps1
+    py -m streamlit run frontend/app.py
+
+Mac/Linux:
+
+    source .venv/bin/activate
+    python -m streamlit run frontend/app.py
+
+If Streamlit starts correctly, the app will open at:
+
+    http://localhost:8501
+
+
+8. Check That Everything Works
+------------------------------
+
+Backend checks:
+
+- Open http://localhost:8000/health
+- You should see:
+
+    {"status":"ok"}
+
+- Open http://localhost:8000/models
+- You should see a JSON list of Gemini models
+
+Frontend checks:
+
+- Open http://localhost:8501
+- You should see the Aarohi chat interface
+- Type a mental-health related message such as:
+
+    I feel overwhelmed and anxious about work lately.
+
+- Aarohi should respond with supportive, practical guidance
+
+
+9. Test Saved Chats
+-------------------
+
+- Send a few messages
+- Click "New chat"
+- Confirm the previous conversation still appears in the left sidebar
+- Click the old chat and confirm it reloads
+
+
+10. Test Safety Behavior
+------------------------
+
+Send a message like:
+
+    I want to end my life
+
+The app should not respond normally.
+It should return the safety-support response instead.
+
+
+11. How To Stop The App
+-----------------------
+
+In each terminal, press:
+
+    Ctrl + C
+
+
+12. Common Problems And Fixes
+-----------------------------
+
+Problem: uvicorn or streamlit is not recognized
+
+Fix:
+
+- Use:
+
+    py -m uvicorn backend.main:app --reload
+    py -m streamlit run frontend/app.py
+
+instead of plain:
+
+    uvicorn ...
+    streamlit ...
+
+
+Problem: API key error
+
+Fix:
+
+- Make sure .env exists
+- Make sure GEMINI_API_KEY is set correctly
+- Restart the backend after changing .env
+
+
+Problem: Frontend loads but chat does not work
+
+Fix:
+
+- Make sure the FastAPI backend is running on port 8000
+- Check http://localhost:8000/health
+
+
+Problem: Models do not appear
+
+Fix:
+
+- Make sure your internet connection is working
+- Make sure your Gemini API key is valid
+- Restart the backend
+
+
+Problem: Old UI still appears
+
+Fix:
+
+- Stop Streamlit
+- Start it again
+- Hard refresh the browser
+
+
+13. Recommended Run Order
+-------------------------
+
+Always run the app in this order:
+
+1. Activate the virtual environment
+2. Start FastAPI backend
+3. Start Streamlit frontend
+4. Open the browser
+
+
+14. Files You Should Know
+-------------------------
+
+- backend/main.py -> FastAPI backend
+- frontend/app.py -> Streamlit chat UI
+- frontend/pages/1_Manual.py -> manual page
+- data/chat_history.json -> saved conversations
+- .env -> local environment variables
+- requirements.txt -> Python dependencies
+
+
+15. Quick Start Summary
+-----------------------
+
+If you already have Python installed, these are the main commands:
+
+Windows PowerShell:
+
+    py -m venv .venv
+    .\.venv\Scripts\Activate.ps1
+    py -m pip install -r requirements.txt
+    Copy-Item .env.example .env
+    py -m uvicorn backend.main:app --reload
+
+Then in a second terminal:
+
+    .\.venv\Scripts\Activate.ps1
+    py -m streamlit run frontend/app.py
+
