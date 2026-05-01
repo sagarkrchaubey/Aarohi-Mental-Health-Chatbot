@@ -38,7 +38,7 @@ Aarohi is **not** a general-purpose assistant. It redirects unrelated prompts ba
 
 ### 1. Backend Server — FastAPI Running
 
-![Backend running on port 8000](screenshots/Screenshot_2026-03-27_014449.png)
+![Backend running on port 8000](screenshots/backend.png)
 
 The FastAPI backend is started with `uvicorn` and runs on `http://localhost:8000`. The terminal confirms the reloader process is active, the server process has started, and the application startup is complete.
 
@@ -46,7 +46,7 @@ The FastAPI backend is started with `uvicorn` and runs on `http://localhost:8000
 
 ### 2. Frontend Server — Streamlit Running
 
-![Streamlit frontend running on port 8501](screenshots/Screenshot_2026-03-27_014539.png)
+![Streamlit frontend running on port 8501](screenshots/frontend.png)
 
 The Streamlit frontend is started in a separate terminal and becomes available at `http://localhost:8501` (local) and the LAN network address. Both the backend and frontend must be running simultaneously for the app to function.
 
@@ -54,7 +54,7 @@ The Streamlit frontend is started in a separate terminal and becomes available a
 
 ### 3. Aarohi Chat Interface — Home Screen
 
-![Aarohi home screen with Forest theme](screenshots/Screenshot_2026-03-27_014649.png)
+![Aarohi home screen with Forest theme](screenshots/home.png)
 
 The main chat interface features a clean dark UI with the **Forest** theme active. The left sidebar shows theme selection, model selection, and saved chat history. The welcome panel displays quick-start prompts covering common emotional struggles including overwhelm, racing thoughts, low mood, and stress.
 
@@ -62,7 +62,7 @@ The main chat interface features a clean dark UI with the **Forest** theme activ
 
 ### 4. Aarohi in Conversation
 
-![Aarohi responding to a user message](screenshots/Screenshot_2026-03-27_014907.png)
+![Aarohi responding to a user message](screenshots/response.png)
 
 An active session showing Aarohi's response style. Aarohi introduces itself as a supportive companion, listens without judgment, and gently checks in with the user before offering guidance. Each message is timestamped and tagged with the model and detected emotional category (e.g., `general distress`).
 
