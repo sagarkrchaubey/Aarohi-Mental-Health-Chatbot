@@ -34,8 +34,6 @@ Aarohi is **not** a general-purpose assistant. It redirects unrelated prompts ba
 
 ## Screenshots
 
-> 📁 Place the four screenshots below inside a folder named **`screenshots/`** at the root of the repository.
-
 ### 1. Backend Server — FastAPI Running
 
 ![Backend running on port 8000](screenshots/backend.png)
@@ -123,7 +121,7 @@ Aarohi-Mental-Health-Chatbot/
 ├── data/
 │   └── chat_history.json    # Persistent conversation storage
 │
-├── screenshots/             # ← Place your screenshots here
+├── screenshots/             # Sample Screenshots are here
 │
 ├── .env.example             # Environment variable template
 ├── .env                     # Your local config (not committed)
